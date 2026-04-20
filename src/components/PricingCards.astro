@@ -1,0 +1,117 @@
+---
+// Dos planes de precios
+const APP_URL = 'https://bot-cfdi-tester.streamlit.app';
+
+const plans = [
+  {
+    name:     'Básico',
+    badge:    null,
+    price:    '$499',
+    period:   'MXN /mes',
+    subtitle: 'Para contadores independientes',
+    features: [
+      'Hasta 200 XML por mes',
+      'Clasificación con IA',
+      'Catálogo SAT estándar',
+      'Catálogo personalizado',
+      'Export a Excel',
+      'Soporte por email',
+    ],
+    cta:       'Empezar plan Básico',
+    highlight: false,
+  },
+  {
+    name:     'Pro',
+    badge:    'Más popular',
+    price:    '$999',
+    period:   'MXN /mes',
+    subtitle: 'Para despachos y empresas',
+    features: [
+      'XMLs ilimitados',
+      'Todo lo de Básico',
+      'Múltiples RFCs',
+      'Histórico de procesamientos',
+      'Soporte prioritario por WhatsApp',
+      'Onboarding personalizado',
+    ],
+    cta:       'Empezar plan Pro',
+    highlight: true,
+  },
+];
+---
+
+<section class="bg-[#F8FAFC] px-4 sm:px-6 lg:px-8 py-20 border-t border-[#E2E8F0]">
+  <div class="max-w-5xl mx-auto">
+
+    <div class="text-center mb-12">
+      <p class="fk-eyebrow mb-3">Planes</p>
+      <h2 class="text-2xl sm:text-3xl font-semibold text-[#0F172A]" style="letter-spacing:-0.02em;">
+        Precios simples. Sin sorpresas.
+      </h2>
+      <p class="text-[#64748B] mt-3 text-sm">Elige el plan que se ajuste a tu volumen mensual.</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl mx-auto">
+      {plans.map(({ name, badge, price, period, subtitle, features, cta, highlight }) => (
+        <div
+          class={`relative flex flex-col rounded-[10px] p-7 border ${
+            highlight
+              ? 'border-[#1D9E75] bg-white shadow-lg shadow-[#1D9E75]/10'
+              : 'border-[#E2E8F0] bg-white'
+          }`}
+        >
+          {/* Badge */}
+          {badge && (
+            <span
+              class="absolute -top-3 left-1/2 -translate-x-1/2 text-xs font-semibold px-3 py-1 rounded-full"
+              style="background:#1D9E75; color:#fff; font-family:'JetBrains Mono',monospace; letter-spacing:0.04em;"
+            >
+              {badge}
+            </span>
+          )}
+
+          {/* Nombre + subtítulo */}
+          <p class="text-xs font-semibold text-[#64748B] uppercase tracking-widest mb-1">{name}</p>
+          <p class="text-[#64748B] text-sm mb-5">{subtitle}</p>
+
+          {/* Precio */}
+          <div class="flex items-baseline gap-1 mb-6">
+            <span
+              class="text-4xl font-bold text-[#0F172A]"
+              style="font-variant-numeric:tabular-nums; letter-spacing:-0.03em;"
+            >{price}</span>
+            <span class="text-sm text-[#64748B]">{period}</span>
+          </div>
+
+          {/* Features */}
+          <ul class="space-y-2.5 mb-8 flex-1">
+            {features.map(f => (
+              <li class="flex items-start gap-2.5 text-sm text-[#475569]">
+                <svg
+                  class="flex-shrink-0 mt-0.5"
+                  width="16" height="16" viewBox="0 0 24 24"
+                  fill="none" stroke="#1D9E75" stroke-width="2.5"
+                  stroke-linecap="round" stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <polyline points="20 6 9 17 4 12"/>
+                </svg>
+                {f}
+              </li>
+            ))}
+          </ul>
+
+          {/* CTA */}
+          <a
+            href={APP_URL}
+            class={highlight ? 'btn-primary justify-center text-sm' : 'btn-secondary justify-center text-sm'}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {cta}
+          </a>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

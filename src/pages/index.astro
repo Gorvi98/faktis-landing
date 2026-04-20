@@ -1,0 +1,21 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import Hero from '../components/Hero.astro';
+import FeatureGrid from '../components/FeatureGrid.astro';
+import CTABanner from '../components/CTABanner.astro';
+---
+
+<Layout
+  title="Faktis | Clasificador CFDI con IA"
+  description="Procesa lotes de CFDI 4.0, clasifica con IA y exporta a Excel listo para tu ERP. Sin captura manual, sin errores."
+>
+  <Header />
+  <main>
+    <Hero />
+    <FeatureGrid />
+    <CTABanner />
+  </main>
+  <Footer />
+</Layout>

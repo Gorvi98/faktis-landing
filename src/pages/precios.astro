@@ -1,0 +1,36 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import PricingCards from '../components/PricingCards.astro';
+import DespachoSocio from '../components/DespachoSocio.astro';
+import FAQ from '../components/FAQ.astro';
+import CTABanner from '../components/CTABanner.astro';
+---
+
+<Layout
+  title="Precios | Faktis"
+  description="Planes simples sin sorpresas. Desde $499 MXN/mes para contadores independientes hasta ilimitado para despachos."
+>
+  <Header />
+  <main>
+    <!-- Hero corto -->
+    <section class="bg-[#0F172A] text-white px-4 sm:px-6 lg:px-8 py-16 sm:py-20 text-center">
+      <div class="max-w-3xl mx-auto">
+        <p class="fk-eyebrow mb-4">Planes</p>
+        <h1 class="text-[2rem] sm:text-4xl font-bold text-white mb-4" style="letter-spacing:-0.025em;">
+          Precios simples. Sin sorpresas.
+        </h1>
+        <p class="text-[#94A3B8] text-lg">
+          Elige el plan que se ajuste a tu volumen mensual.
+        </p>
+      </div>
+    </section>
+
+    <PricingCards />
+    <DespachoSocio />
+    <FAQ />
+    <CTABanner />
+  </main>
+  <Footer />
+</Layout>

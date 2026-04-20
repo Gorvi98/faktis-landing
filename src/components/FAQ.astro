@@ -1,0 +1,66 @@
+---
+// FAQ con acordeón nativo (details/summary)
+const faqs = [
+  {
+    q: '¿Mis XMLs se almacenan en sus servidores?',
+    a: 'Procesamos cada lote en sesión. No guardamos copia de tus XMLs después de generar el reporte. Puedes ver detalles en nuestro Aviso de Privacidad.',
+  },
+  {
+    q: '¿Funciona con CFDI 3.3 o solo 4.0?',
+    a: 'Faktis soporta CFDI 4.0, que es la versión vigente desde abril 2023. Si tienes XMLs 3.3 antiguos, contáctanos.',
+  },
+  {
+    q: '¿Puedo cancelar cuando quiera?',
+    a: 'Sí. La suscripción es mensual y puedes cancelar en cualquier momento desde tu cuenta. No hay contratos forzosos.',
+  },
+  {
+    q: '¿Cómo pago?',
+    a: 'Aceptamos tarjeta de crédito y débito vía MercadoPago. La facturación es automática cada mes.',
+  },
+  {
+    q: '¿Funciona con mi ERP (Odoo, CONTPAQi, Aspel)?',
+    a: 'El reporte se exporta en Excel con formato compatible para importar a la mayoría de ERPs contables. Si necesitas formato específico, contáctanos.',
+  },
+  {
+    q: '¿Qué pasa si supero los 200 XML del plan Básico?',
+    a: 'Te avisamos antes de que llegues al límite. Puedes hacer upgrade al Pro en cualquier momento.',
+  },
+];
+---
+
+<section class="bg-white px-4 sm:px-6 lg:px-8 py-20 border-t border-[#E2E8F0]">
+  <div class="max-w-3xl mx-auto">
+    <div class="text-center mb-10">
+      <p class="fk-eyebrow mb-3">FAQ</p>
+      <h2 class="text-2xl sm:text-3xl font-semibold text-[#0F172A]" style="letter-spacing:-0.02em;">
+        Preguntas frecuentes
+      </h2>
+    </div>
+
+    <div class="space-y-2">
+      {faqs.map(({ q, a }) => (
+        <details class="group border border-[#E2E8F0] rounded-[10px] overflow-hidden">
+          <summary
+            class="flex items-center justify-between gap-4 px-5 py-4 cursor-pointer select-none list-none
+                   text-sm font-semibold text-[#0F172A] hover:bg-[#F8FAFC] transition-colors"
+          >
+            {q}
+            <!-- Chevron SVG -->
+            <svg
+              class="flex-shrink-0 transition-transform group-open:rotate-180"
+              width="16" height="16" viewBox="0 0 24 24"
+              fill="none" stroke="#64748B" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <polyline points="6 9 12 15 18 9"/>
+            </svg>
+          </summary>
+          <div class="px-5 pb-4 pt-1 text-sm text-[#64748B] leading-relaxed border-t border-[#F1F5F9]">
+            {a}
+          </div>
+        </details>
+      ))}
+    </div>
+  </div>
+</section>

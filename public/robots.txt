@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://faktis.com.mx/sitemap.xml

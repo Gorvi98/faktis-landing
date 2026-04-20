@@ -1,0 +1,94 @@
+---
+// Header fijo con logo, nav y CTA
+const APP_URL = 'https://bot-cfdi-tester.streamlit.app';
+const navLinks = [
+  { href: '/',         label: 'Inicio'   },
+  { href: '/precios',  label: 'Precios'  },
+  { href: '/contacto', label: 'Contacto' },
+];
+const currentPath = Astro.url.pathname;
+---
+
+<header class="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-b border-[#E2E8F0]">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-16">
+
+      <!-- Logo -->
+      <a href="/" class="flex items-center gap-2.5 no-underline">
+        <img src="/favicon.svg" alt="Logo Faktis" width="28" height="28" class="flex-shrink-0" />
+        <span style="font-family:'Inter',sans-serif; font-weight:700; font-size:1.1rem; color:#0F172A; letter-spacing:-0.02em;">
+          faktis
+        </span>
+      </a>
+
+      <!-- Nav desktop -->
+      <nav class="hidden md:flex items-center gap-6" aria-label="Navegación principal">
+        {navLinks.map(({ href, label }) => {
+          const active = currentPath === href || (href !== '/' && currentPath.startsWith(href));
+          return (
+            <a
+              href={href}
+              class={`text-sm font-medium transition-colors no-underline ${
+                active
+                  ? 'text-[#1D9E75]'
+                  : 'text-[#64748B] hover:text-[#0F172A]'
+              }`}
+              aria-current={active ? 'page' : undefined}
+            >
+              {label}
+            </a>
+          );
+        })}
+      </nav>
+
+      <!-- CTA + menú móvil -->
+      <div class="flex items-center gap-3">
+        <a href={APP_URL} class="btn-primary text-sm" target="_blank" rel="noopener noreferrer">
+          Entrar
+        </a>
+
+        <!-- Botón hamburguesa (móvil) -->
+        <button
+          id="menu-toggle"
+          class="md:hidden flex flex-col gap-1.5 p-1.5 rounded"
+          aria-label="Abrir menú"
+          aria-expanded="false"
+          aria-controls="mobile-menu"
+        >
+          <span class="w-5 h-0.5 bg-[#64748B] block transition-all" id="bar1"></span>
+          <span class="w-5 h-0.5 bg-[#64748B] block transition-all" id="bar2"></span>
+          <span class="w-5 h-0.5 bg-[#64748B] block transition-all" id="bar3"></span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Nav móvil -->
+  <div
+    id="mobile-menu"
+    class="md:hidden hidden border-t border-[#E2E8F0] bg-white"
+  >
+    <nav class="flex flex-col px-4 py-3 gap-1" aria-label="Menú móvil">
+      {navLinks.map(({ href, label }) => (
+        <a
+          href={href}
+          class="text-sm font-medium text-[#64748B] hover:text-[#1D9E75] py-2 no-underline"
+        >
+          {label}
+        </a>
+      ))}
+    </nav>
+  </div>
+</header>
+
+<!-- Espaciado para compensar header fijo -->
+<div class="h-16"></div>
+
+<script>
+  const toggle = document.getElementById('menu-toggle')!;
+  const menu   = document.getElementById('mobile-menu')!;
+  toggle.addEventListener('click', () => {
+    const open = menu.classList.toggle('hidden') === false;
+    toggle.setAttribute('aria-expanded', String(open));
+  });
+</script>
