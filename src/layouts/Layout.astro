@@ -61,6 +61,23 @@ const canonicalUrl = new URL(Astro.url.pathname, 'https://faktis.com.mx');
 
   </head>
   <body>
+    <!-- Banner en construcción — amber warning, encima del Header -->
+    <div style="
+      background: #EF9F27;
+      color: #0F172A;
+      text-align: center;
+      padding: 8px 16px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    ">
+      🚧 Sitio en construcción · Lanzamiento próximamente · faktis.com.mx
+    </div>
     <slot />
   </body>
 </html>
