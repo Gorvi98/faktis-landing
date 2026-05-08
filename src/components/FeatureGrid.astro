@@ -31,7 +31,8 @@ const features = [
     <!-- Encabezado de sección -->
     <div class="text-center mb-12">
       <p class="fk-eyebrow mb-3">Por qu&eacute; Faktis</p>
-      <h2 class="text-2xl sm:text-3xl font-semibold text-[#0F172A]" style="letter-spacing:-0.02em;">
+      <h2 class="text-2xl sm:text-3xl font-semibold text-[#0F172A]"
+          style="font-family:'Inter Tight','Inter',sans-serif; letter-spacing:-0.025em;">
         Cuatro razones para dejar la captura manual
       </h2>
     </div>
@@ -40,10 +41,10 @@ const features = [
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
       {features.map(({ icon, title, desc }) => (
         <div class="fk-card hover:shadow-sm transition-shadow">
-          <!-- Ícono en badge teal -->
+          <!-- Ícono en badge teal (DS v1.1 tints) -->
           <div
             class="w-10 h-10 rounded-lg flex items-center justify-center mb-4"
-            style="background:#E1F5EE; color:#1D9E75;"
+            style="background:var(--fk-teal-50); color:var(--fk-teal-700);"
             set:html={icon}
           />
           <h3 class="text-base font-semibold text-[#0F172A] mb-2" style="letter-spacing:-0.01em;" set:html={title} />
@@ -59,7 +60,8 @@ const features = [
   <div class="max-w-5xl mx-auto">
     <div class="text-center mb-12">
       <p class="fk-eyebrow mb-3">En 3 pasos</p>
-      <h2 class="text-2xl sm:text-3xl font-semibold text-[#0F172A]" style="letter-spacing:-0.02em;">
+      <h2 class="text-2xl sm:text-3xl font-semibold text-[#0F172A]"
+          style="font-family:'Inter Tight','Inter',sans-serif; letter-spacing:-0.025em;">
         De XML a reporte contable, en minutos
       </h2>
     </div>

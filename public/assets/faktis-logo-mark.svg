@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100" role="img" aria-label="Faktis">
+  <title>Faktis · isotipo</title>
+  <defs>
+    <linearGradient id="fkCornerTL" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0F6E56"/>
+      <stop offset="100%" stop-color="#1D9E75"/>
+    </linearGradient>
+    <linearGradient id="fkCornerBR" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1D9E75"/>
+      <stop offset="100%" stop-color="#0F6E56"/>
+    </linearGradient>
+    <linearGradient id="fkTop" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#34D399"/>
+      <stop offset="100%" stop-color="#1D9E75"/>
+    </linearGradient>
+    <linearGradient id="fkBot" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1D9E75"/>
+      <stop offset="100%" stop-color="#34D399"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Module 1 · top-left rounded square (dark gradient accent) -->
+  <rect x="6" y="6" width="24" height="24" rx="6" fill="url(#fkCornerTL)"/>
+
+  <!-- Module 4 · bottom-right rounded square (dark gradient accent) -->
+  <rect x="70" y="70" width="24" height="24" rx="6" fill="url(#fkCornerBR)"/>
+
+  <!-- Module 2 · upper curve (F top arm) -->
+  <path d="M34 6 H74 a20 20 0 0 1 0 40 H34 Z" fill="url(#fkTop)"/>
+
+  <!-- Middle horizontal bar (the F crossbar that joins both curves) -->
+  <rect x="6" y="42" width="76" height="14" rx="3" fill="#1D9E75"/>
+
+  <!-- Module 3 · lower curve (F descender / bottom arm) -->
+  <path d="M66 54 H26 a20 20 0 0 0 0 40 H66 Z" fill="url(#fkBot)"/>
+</svg>

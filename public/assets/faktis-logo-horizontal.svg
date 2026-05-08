@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 100" width="360" height="100" role="img" aria-label="Faktis">
+  <title>Faktis · logotipo horizontal</title>
+  <defs>
+    <linearGradient id="fkH_CornerTL" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0F6E56"/>
+      <stop offset="100%" stop-color="#1D9E75"/>
+    </linearGradient>
+    <linearGradient id="fkH_CornerBR" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1D9E75"/>
+      <stop offset="100%" stop-color="#0F6E56"/>
+    </linearGradient>
+    <linearGradient id="fkH_Top" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#34D399"/>
+      <stop offset="100%" stop-color="#1D9E75"/>
+    </linearGradient>
+    <linearGradient id="fkH_Bot" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1D9E75"/>
+      <stop offset="100%" stop-color="#34D399"/>
+    </linearGradient>
+  </defs>
+
+  <!-- ── Isotipo (4 módulos) ── -->
+  <g>
+    <rect x="6" y="6" width="24" height="24" rx="6" fill="url(#fkH_CornerTL)"/>
+    <rect x="70" y="70" width="24" height="24" rx="6" fill="url(#fkH_CornerBR)"/>
+    <path d="M34 6 H74 a20 20 0 0 1 0 40 H34 Z" fill="url(#fkH_Top)"/>
+    <rect x="6" y="42" width="76" height="14" rx="3" fill="#1D9E75"/>
+    <path d="M66 54 H26 a20 20 0 0 0 0 40 H66 Z" fill="url(#fkH_Bot)"/>
+  </g>
+
+  <!-- ── Wordmark "Faktis" ── -->
+  <text x="118" y="68"
+        font-family="'Inter Tight','Inter',system-ui,sans-serif"
+        font-weight="600"
+        font-size="56"
+        letter-spacing="-1.6"
+        fill="#1D9E75">Faktis</text>
+</svg>

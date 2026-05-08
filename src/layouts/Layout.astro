@@ -46,16 +46,16 @@ const canonicalUrl = new URL(Astro.url.pathname, 'https://faktis.com.mx');
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
-    <!-- Fuentes — preconnect para reducir latencia -->
+    <!-- Fuentes — preconnect para reducir latencia (DS v1.1) -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       rel="preload"
       as="style"
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inter+Tight:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap"
     />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inter+Tight:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap"
       rel="stylesheet"
     />
 
@@ -76,7 +76,7 @@ const canonicalUrl = new URL(Astro.url.pathname, 'https://faktis.com.mx');
       top: 0;
       z-index: 100;
     ">
-      🚧 Sitio en construcción · Lanzamiento próximamente · faktis.com.mx
+      Sitio en construcción · Lanzamiento próximamente · faktis.com.mx
     </div>
     <slot />
   </body>

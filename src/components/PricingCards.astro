@@ -45,7 +45,8 @@ const plans = [
 
     <div class="text-center mb-12">
       <p class="fk-eyebrow mb-3">Planes</p>
-      <h2 class="text-2xl sm:text-3xl font-semibold text-[#0F172A]" style="letter-spacing:-0.02em;">
+      <h2 class="text-2xl sm:text-3xl font-semibold text-[#0F172A]"
+          style="font-family:'Inter Tight','Inter',sans-serif; letter-spacing:-0.025em;">
         Elige tu plan
       </h2>
       <p class="text-[#64748B] mt-3 text-sm">Elige el plan que se ajuste a tu volumen mensual.</p>
@@ -54,10 +55,10 @@ const plans = [
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl mx-auto">
       {plans.map(({ name, badge, price, period, subtitle, features, cta, highlight }) => (
         <div
-          class={`relative flex flex-col rounded-[10px] p-7 border ${
+          class={`relative flex flex-col rounded-[10px] p-7 border transition-shadow ${
             highlight
-              ? 'border-[#1D9E75] bg-white shadow-lg shadow-[#1D9E75]/10'
-              : 'border-[#E2E8F0] bg-white'
+              ? 'border-[var(--fk-teal)] bg-white shadow-lg shadow-[var(--fk-teal-tint-12)]'
+              : 'border-[#E2E8F0] bg-white hover:shadow-md'
           }`}
         >
           {/* Badge */}
@@ -78,7 +79,7 @@ const plans = [
           <div class="flex items-baseline gap-1 mb-6">
             <span
               class="text-4xl font-bold text-[#0F172A]"
-              style="font-variant-numeric:tabular-nums; letter-spacing:-0.03em;"
+              style="font-family:'Inter Tight','Inter',sans-serif; font-variant-numeric:tabular-nums; letter-spacing:-0.035em;"
             >{price}</span>
             <span class="text-sm text-[#64748B]">{period}</span>
           </div>
