@@ -1,94 +1,64 @@
 ---
-// Header fijo con logo, nav y CTA
+// Nav fija translúcida oscura — port del prototipo
 const APP_URL = 'https://bot-cfdi-tester.streamlit.app';
+
 const navLinks = [
-  { href: '/',         label: 'Inicio'   },
-  { href: '/precios',  label: 'Precios'  },
-  { href: '/contacto', label: 'Contacto' },
+  { href: '/#como-funciona', label: 'Cómo funciona' },
+  { href: '/#seguridad',     label: 'Seguridad'     },
+  { href: '/precios',        label: 'Precios'       },
+  { href: '/#faq',           label: 'FAQ'           },
+  { href: '/contacto',       label: 'Contacto'      },
 ];
+
 const currentPath = Astro.url.pathname;
+const isActive = (href: string) =>
+  !href.includes('#') && (currentPath === href || currentPath === `${href}/`);
 ---
 
-<header class="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-b border-[#E2E8F0]">
-  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="flex items-center justify-between h-16">
-
-      <!-- Logo (DS v1.1 · isotipo oficial + wordmark Faktis) -->
-      <a href="/" class="flex items-center gap-2.5 no-underline" aria-label="Faktis · inicio">
-        <img src="/assets/faktis-logo-mark.svg" alt="" width="30" height="30" class="flex-shrink-0" aria-hidden="true" />
-        <span style="font-family:'Inter Tight','Inter',sans-serif; font-weight:600; font-size:1.25rem; color:#1D9E75; letter-spacing:-0.025em;">
-          Faktis
-        </span>
-      </a>
-
-      <!-- Nav desktop -->
-      <nav class="hidden md:flex items-center gap-6" aria-label="Navegación principal">
-        {navLinks.map(({ href, label }) => {
-          const active = currentPath === href || (href !== '/' && currentPath.startsWith(href));
-          return (
-            <a
-              href={href}
-              class={`text-sm font-medium transition-colors no-underline ${
-                active
-                  ? 'text-[#1D9E75]'
-                  : 'text-[#64748B] hover:text-[#0F172A]'
-              }`}
-              aria-current={active ? 'page' : undefined}
-            >
-              {label}
-            </a>
-          );
-        })}
-      </nav>
-
-      <!-- CTA + menú móvil -->
-      <div class="flex items-center gap-3">
-        <a href={APP_URL} class="btn-primary text-sm" target="_blank" rel="noopener noreferrer">
-          Entrar
-        </a>
-
-        <!-- Botón hamburguesa (móvil) -->
-        <button
-          id="menu-toggle"
-          class="md:hidden flex flex-col gap-1.5 p-1.5 rounded"
-          aria-label="Abrir menú"
-          aria-expanded="false"
-          aria-controls="mobile-menu"
-        >
-          <span class="w-5 h-0.5 bg-[#64748B] block transition-all" id="bar1"></span>
-          <span class="w-5 h-0.5 bg-[#64748B] block transition-all" id="bar2"></span>
-          <span class="w-5 h-0.5 bg-[#64748B] block transition-all" id="bar3"></span>
-        </button>
-      </div>
-    </div>
+<nav class="nav" aria-label="Navegación principal">
+  <div class="nav-left">
+    <a class="nav-access" href={APP_URL} target="_blank" rel="noopener noreferrer">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4" />
+        <polyline points="10 17 15 12 10 7" />
+        <line x1="15" y1="12" x2="3" y2="12" />
+      </svg>
+      Accede
+    </a>
+    <a class="nav-logo" href="/" aria-label="Faktis · inicio">
+      <img src="/assets/faktis-logo.png" alt="Faktis" width="122" height="73" />
+    </a>
   </div>
 
-  <!-- Nav móvil -->
-  <div
-    id="mobile-menu"
-    class="md:hidden hidden border-t border-[#E2E8F0] bg-white"
-  >
-    <nav class="flex flex-col px-4 py-3 gap-1" aria-label="Menú móvil">
-      {navLinks.map(({ href, label }) => (
-        <a
-          href={href}
-          class="text-sm font-medium text-[#64748B] hover:text-[#1D9E75] py-2 no-underline"
-        >
-          {label}
-        </a>
-      ))}
-    </nav>
+  <div class="nav-links">
+    {navLinks.map(({ href, label }) => (
+      <a href={href} aria-current={isActive(href) ? 'page' : undefined}>{label}</a>
+    ))}
   </div>
-</header>
 
-<!-- Espaciado para compensar header fijo -->
-<div class="h-16"></div>
+  <button class="nav-burger" id="nav-burger" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav-mobile">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="nav-mobile" id="nav-mobile">
+  {navLinks.map(({ href, label }) => <a href={href}>{label}</a>)}
+  <a href={APP_URL} target="_blank" rel="noopener noreferrer" style="color:var(--fk-teal);font-weight:600;">
+    Accede a tu cuenta &rarr;
+  </a>
+</div>
 
 <script>
-  const toggle = document.getElementById('menu-toggle')!;
-  const menu   = document.getElementById('mobile-menu')!;
-  toggle.addEventListener('click', () => {
-    const open = menu.classList.toggle('hidden') === false;
-    toggle.setAttribute('aria-expanded', String(open));
+  const burger = document.getElementById('nav-burger');
+  const menu = document.getElementById('nav-mobile');
+  burger?.addEventListener('click', () => {
+    const open = menu?.classList.toggle('open') ?? false;
+    burger.setAttribute('aria-expanded', String(open));
   });
+  menu?.querySelectorAll('a').forEach((a) =>
+    a.addEventListener('click', () => {
+      menu.classList.remove('open');
+      burger?.setAttribute('aria-expanded', 'false');
+    })
+  );
 </script>

@@ -1,5 +1,5 @@
 ---
-// Cuatro features con íconos SVG inline
+// Cuatro razones — grid de features (DS v1.1 tints), homologado con .sec/.fk-wrap
 
 const features = [
   {
@@ -25,19 +25,13 @@ const features = [
 ];
 ---
 
-<section id="features" class="bg-[#F8FAFC] px-4 sm:px-6 lg:px-8 py-20">
-  <div class="max-w-6xl mx-auto">
-
-    <!-- Encabezado de sección -->
-    <div class="text-center mb-12">
-      <p class="fk-eyebrow mb-3">Por qu&eacute; Faktis</p>
-      <h2 class="text-2xl sm:text-3xl font-semibold text-[#0F172A]"
-          style="font-family:'Inter Tight','Inter',sans-serif; letter-spacing:-0.025em;">
-        Cuatro razones para dejar la captura manual
-      </h2>
+<section class="sec" id="por-que-faktis">
+  <div class="fk-wrap">
+    <div style="text-align:center; margin-bottom:56px;">
+      <p class="sec-eyebrow center">Por qué Faktis</p>
+      <h2 class="sec-h2 center">Cuatro razones para dejar la <em>captura manual.</em></h2>
     </div>
 
-    <!-- Grid de cards -->
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
       {features.map(({ icon, title, desc }) => (
         <div class="fk-card hover:shadow-sm transition-shadow">
@@ -47,38 +41,8 @@ const features = [
             style="background:var(--fk-teal-50); color:var(--fk-teal-700);"
             set:html={icon}
           />
-          <h3 class="text-base font-semibold text-[#0F172A] mb-2" style="letter-spacing:-0.01em;" set:html={title} />
-          <p class="text-sm text-[#64748B] leading-relaxed" set:html={desc} />
-        </div>
-      ))}
-    </div>
-  </div>
-</section>
-
-<!-- Sección: Cómo funciona -->
-<section class="bg-white px-4 sm:px-6 lg:px-8 py-20 border-t border-[#E2E8F0]">
-  <div class="max-w-5xl mx-auto">
-    <div class="text-center mb-12">
-      <p class="fk-eyebrow mb-3">En 3 pasos</p>
-      <h2 class="text-2xl sm:text-3xl font-semibold text-[#0F172A]"
-          style="font-family:'Inter Tight','Inter',sans-serif; letter-spacing:-0.025em;">
-        De XML a reporte contable, en minutos
-      </h2>
-    </div>
-
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-      {[
-        { num: '01', title: 'Arrastra tus XMLs',  desc: 'Sube uno o miles de CFDI&nbsp;4.0. Faktis los lee todos.' },
-        { num: '02', title: 'La IA clasifica',     desc: 'Cada concepto va a su cuenta SAT correcta. T&uacute; revisas lo que importa.' },
-        { num: '03', title: 'Exporta a Excel',     desc: 'Reporte completo: resumen por cuenta, detalle, conceptos. Listo para tu ERP.' },
-      ].map(({ num, title, desc }) => (
-        <div class="text-center px-4">
-          <div
-            class="fk-mono text-4xl font-bold mb-4"
-            style="color:#E1F5EE; -webkit-text-stroke:1.5px #1D9E75;"
-          >{num}</div>
-          <h3 class="text-lg font-semibold text-[#0F172A] mb-2" style="letter-spacing:-0.01em;">{title}</h3>
-          <p class="text-sm text-[#64748B] leading-relaxed" set:html={desc} />
+          <h3 class="fk-h3 mb-2" set:html={title} />
+          <p class="fk-secondary text-sm" style="line-height:1.6;" set:html={desc} />
         </div>
       ))}
     </div>

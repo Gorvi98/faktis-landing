@@ -1,24 +1,31 @@
 ---
 // Layout base — HTML5, SEO, fuentes, slot
 import '../styles/global.css';
+import '../styles/landing.css';
 
 interface Props {
   title?: string;
   description?: string;
   ogImage?: string;
+  /** Activa el scroll paginado (snap) — solo para el home */
+  snap?: boolean;
 }
 
 const {
   title = 'Faktis | Clasificador CFDI con IA',
   description = 'Procesa lotes de CFDI 4.0, clasifica con IA y exporta a Excel listo para tu ERP. Sin captura manual, sin errores.',
   ogImage = '/og-image.png',
+  snap = false,
 } = Astro.props;
 
 const canonicalUrl = new URL(Astro.url.pathname, 'https://faktis.com.mx');
+
+const FONTS_HREF =
+  'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inter+Tight:wght@400;500;600;700&family=Geist+Mono:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap';
 ---
 
 <!doctype html>
-<html lang="es-MX">
+<html lang="es-MX" class={snap ? 'snap-pages' : undefined} data-density="regular">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -43,39 +50,19 @@ const canonicalUrl = new URL(Astro.url.pathname, 'https://faktis.com.mx');
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImage} />
 
+    <meta name="theme-color" content="#0F172A" />
+
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
-    <!-- Fuentes — preconnect para reducir latencia (DS v1.1) -->
+    <!-- Fuentes -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      rel="preload"
-      as="style"
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inter+Tight:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inter+Tight:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap"
-      rel="stylesheet"
-    />
-
+    <link rel="stylesheet" href={FONTS_HREF} />
   </head>
   <body>
-    <!-- Banner en construcción — amber warning, encima del Header -->
-    <div style="
-      background: #EF9F27;
-      color: #0F172A;
-      text-align: center;
-      padding: 8px 16px;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.72rem;
-      font-weight: 600;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-    ">
+    <!-- Banner en construcción -->
+    <div class="build-banner">
       Sitio en construcción · Lanzamiento próximamente · faktis.com.mx
     </div>
     <slot />

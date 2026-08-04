@@ -1,0 +1,65 @@
+---
+// Cómo funciona — tres pasos con visual mono
+---
+
+<section class="sec page" id="como-funciona" data-screen-label="03 Cómo funciona">
+  <div class="fk-wrap">
+    <p class="sec-eyebrow">Cómo funciona</p>
+    <h2 class="sec-h2">De XML a póliza, en <em>tres pasos.</em></h2>
+    <p class="sec-lede">
+      Mismo flujo de tu despacho — sin captura manual y sin abrir archivos uno por uno.
+    </p>
+
+    <div class="steps">
+      <div class="step">
+        <div class="step-num"><span class="chip">↑</span> Paso 01</div>
+        <h3 class="step-title">Carga tus XMLs</h3>
+        <p class="step-desc">
+          Arrastra hasta 500 archivos CFDI 4.0 a la vez. Faktis valida estructura,
+          sello digital y vigencia del SAT al instante.
+        </p>
+        <div class="step-visual">
+          <pre>{`uploads/
+  ├─ telmex_abr.xml         ✓
+  ├─ gasolinera_silla.xml   ✓
+  ├─ innovacion_norte.xml   ✓
+  ├─ nomina_quincena_1.xml  ⚠
+  ├─ ...12 archivos`}</pre>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num"><span class="chip">✓</span> Paso 02</div>
+        <h3 class="step-title">Revisa los datos</h3>
+        <p class="step-desc">
+          Faktis extrae RFC, UUID, montos, IVA, retenciones y conceptos. Ves los datos
+          en una tabla densa antes de clasificar.
+        </p>
+        <div class="step-visual">
+          <pre style="line-height:1.7">{`RFC      TME840315KT6
+UUID     A4B2-…-9F1E
+SUBTOTAL  1,293.10
+IVA         206.90
+TOTAL     1,500.00`}</pre>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num"><span class="chip">→</span> Paso 03</div>
+        <h3 class="step-title">Clasifica con IA</h3>
+        <p class="step-desc">
+          Claude lee el concepto, asigna cuenta contable y confianza por fila.
+          Exportas a Excel o conector contable en un clic.
+        </p>
+        <div class="step-visual">
+          <div class="conf">
+            <div><span>601-001 Telecom</span><span style="color:var(--fk-teal)">98%</span></div>
+            <div><span>601-005 Combustible</span><span style="color:var(--fk-teal)">97%</span></div>
+            <div><span>401-001 Ventas</span><span style="color:var(--fk-teal)">99%</span></div>
+            <div><span>210-001 Nómina</span><span style="color:var(--fk-warning)">82%</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

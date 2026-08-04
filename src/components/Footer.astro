@@ -1,55 +1,44 @@
 ---
-// Footer con columnas de links y copyright
+// Footer — homologado con .footer/.footer-grid del Design System
 ---
 
-<footer class="bg-[#0F172A] text-[#94A3B8] mt-auto">
-  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-10">
+<footer class="footer">
+  <div class="fk-wrap">
+    <div class="footer-grid">
 
-      <!-- Brand (DS v1.1) -->
-      <div class="lg:col-span-1">
-        <div class="flex items-center gap-2 mb-3">
-          <img src="/assets/faktis-logo-mark.svg" alt="" width="26" height="26" aria-hidden="true" />
-          <span style="font-family:'Inter Tight','Inter',sans-serif; font-weight:600; font-size:1.125rem; color:#34D399; letter-spacing:-0.025em;">
-            Faktis
-          </span>
-        </div>
-        <p class="text-xs fk-mono tracking-widest text-[#64748B]">CFDI · Contabilidad · IA</p>
+      <!-- Brand -->
+      <div class="footer-brand">
+        <img src="/assets/faktis-logo.png" alt="Faktis" />
+        <p>Convierte el caos fiscal en claridad instantánea. CFDI 4.0 clasificado con IA, hecho en México.</p>
       </div>
 
       <!-- Producto -->
       <div>
-        <p class="text-xs font-semibold text-[#F8FAFC] uppercase tracking-widest mb-3">Producto</p>
-        <ul class="space-y-2 text-sm">
-          <li><a href="/"        class="hover:text-[#1D9E75] transition-colors no-underline">Inicio</a></li>
-          <li><a href="/precios" class="hover:text-[#1D9E75] transition-colors no-underline">Precios</a></li>
+        <h5>Producto</h5>
+        <ul>
+          <li><a href="/">Inicio</a></li>
+          <li><a href="/precios">Precios</a></li>
           <li>
-            <a
-              href="https://bot-cfdi-tester.streamlit.app"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="hover:text-[#1D9E75] transition-colors no-underline"
-            >Demo</a>
+            <a href="https://bot-cfdi-tester.streamlit.app" target="_blank" rel="noopener noreferrer">Demo</a>
           </li>
         </ul>
       </div>
 
       <!-- Empresa -->
       <div>
-        <p class="text-xs font-semibold text-[#F8FAFC] uppercase tracking-widest mb-3">Empresa</p>
-        <ul class="space-y-2 text-sm">
-          <li><a href="/contacto"          class="hover:text-[#1D9E75] transition-colors no-underline">Contacto</a></li>
-          <li><a href="/aviso-privacidad"  class="hover:text-[#1D9E75] transition-colors no-underline">Aviso de privacidad</a></li>
+        <h5>Empresa</h5>
+        <ul>
+          <li><a href="/contacto">Contacto</a></li>
+          <li><a href="/aviso-privacidad">Aviso de privacidad</a></li>
         </ul>
       </div>
 
       <!-- Social -->
       <div>
-        <p class="text-xs font-semibold text-[#F8FAFC] uppercase tracking-widest mb-3">Social</p>
-        <ul class="space-y-2 text-sm">
+        <h5>Social</h5>
+        <ul>
           <li>
-            <a href="#" class="hover:text-[#1D9E75] transition-colors no-underline flex items-center gap-1.5">
-              <!-- LinkedIn SVG -->
+            <a href="#" style="display:inline-flex; align-items:center; gap:6px;">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 <rect x="2" y="2" width="20" height="20" rx="4"/>
                 <line x1="8" y1="10" x2="8" y2="16"/>
@@ -61,8 +50,7 @@
             </a>
           </li>
           <li>
-            <a href="#" class="hover:text-[#1D9E75] transition-colors no-underline flex items-center gap-1.5">
-              <!-- TikTok SVG simplificado -->
+            <a href="#" style="display:inline-flex; align-items:center; gap:6px;">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/>
               </svg>
@@ -73,8 +61,11 @@
       </div>
     </div>
 
-    <div class="border-t border-[#1E293B] pt-6 text-xs text-center text-[#475569]">
-      &copy; 2026 Faktis. Hecho en CDMX por contadores, para contadores.
+    <div class="footer-bottom">
+      <span>&copy; 2026 Faktis. Hecho en CDMX por contadores, para contadores.</span>
+      <div class="fb-right">
+        <span>CFDI · Contabilidad · IA</span>
+      </div>
     </div>
   </div>
 </footer>

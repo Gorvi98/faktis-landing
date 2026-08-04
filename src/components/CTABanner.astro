@@ -1,27 +1,20 @@
 ---
-// Banner final de conversión
+// Banner final de conversión — homologado con el break oscuro .cta-final
 const APP_URL = 'https://bot-cfdi-tester.streamlit.app';
 ---
 
-<section class="bg-[#0F172A] px-4 sm:px-6 lg:px-8 py-16">
-  <div class="max-w-3xl mx-auto text-center">
-    <h2
-      class="text-2xl sm:text-3xl font-bold text-white mb-3"
-      style="font-family:'Inter Tight','Inter',sans-serif; letter-spacing:-0.03em;"
-    >
-      &iquest;Listo para procesar tus CFDI?
-    </h2>
-    <p class="text-[#94A3B8] text-base mb-8">
-      Empieza hoy. Sin tarjeta, sin instalaciones.
-    </p>
-    <a
-      href={APP_URL}
-      class="inline-flex items-center gap-2 bg-[#1D9E75] text-white font-semibold text-base
-             px-7 py-3.5 rounded-[6px] hover:bg-[#0F6E56] transition-colors no-underline"
-      target="_blank"
-      rel="noopener noreferrer"
-    >
-      Empezar gratis &rarr;
-    </a>
+<section class="cta-final" data-screen-label="CTA final">
+  <div class="fk-wrap">
+    <p class="sec-eyebrow">Empieza hoy</p>
+    <h2>&iquest;Listo para procesar tus <em>CFDI?</em></h2>
+    <p>Empieza hoy. Sin tarjeta, sin instalaciones.</p>
+    <div class="ctas">
+      <a class="fk-btn-primary" href={APP_URL} target="_blank" rel="noopener noreferrer">
+        Empezar gratis
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M5 12h14" /><path d="m12 5 7 7-7 7" />
+        </svg>
+      </a>
+    </div>
   </div>
 </section>

@@ -1,0 +1,76 @@
+---
+// Métricas en producción — contador animado al entrar en viewport
+const items = [
+  { value: 47000, suffix: '+', decimals: 0, label: 'CFDIs/mes',         sub: 'Procesados en producción' },
+  { value: 96.3,  suffix: '%', decimals: 1, label: 'Confianza media',   sub: 'En clasificación SAT con IA' },
+  { value: 4.2,   suffix: 's', decimals: 1, label: 'Tiempo · lote 12',  sub: 'Antes: 35 min en captura manual' },
+  { value: 128,   suffix: 'h', decimals: 0, label: 'Ahorradas / mes',   sub: 'Por contador en un despacho típico' },
+];
+
+const fmt = (n: number, d: number) =>
+  d > 0 ? n.toFixed(d) : Math.round(n).toLocaleString('es-MX');
+---
+
+<section class="metrics page" id="metricas" data-screen-label="02 Métricas">
+  <div class="fk-wrap">
+    <p class="sec-eyebrow center">En producción</p>
+    <h2 class="sec-h2 center">Los números que <em>ya rinde</em> Faktis.</h2>
+
+    <div class="metrics-grid">
+      {items.map((m) => (
+        <div class="metric" data-value={m.value} data-decimals={m.decimals}>
+          <div class="metric-label">{m.label}</div>
+          <div class="metric-value">
+            <span class="metric-num">{fmt(m.value, m.decimals)}</span><span class="unit">{m.suffix}</span>
+          </div>
+          <div class="metric-sub">{m.sub}</div>
+        </div>
+      ))}
+    </div>
+
+    <p class="metrics-live">
+      <span class="live-dot"></span>
+      Panel actualizado en tiempo real · última sincronización hace 4 min
+    </p>
+  </div>
+</section>
+
+<script>
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const metrics = document.querySelectorAll<HTMLElement>('.metric[data-value]');
+
+  if (!reduce && metrics.length) {
+    const format = (n: number, d: number) =>
+      d > 0 ? n.toFixed(d) : Math.round(n).toLocaleString('es-MX');
+
+    metrics.forEach((el) => {
+      const num = el.querySelector<HTMLElement>('.metric-num');
+      if (num) num.textContent = format(0, Number(el.dataset.decimals ?? 0));
+    });
+
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (!e.isIntersecting) return;
+          const el = e.target as HTMLElement;
+          const num = el.querySelector<HTMLElement>('.metric-num');
+          const target = Number(el.dataset.value ?? 0);
+          const decimals = Number(el.dataset.decimals ?? 0);
+          const start = performance.now();
+          const dur = 1400;
+          const tick = (t: number) => {
+            const p = Math.min(1, (t - start) / dur);
+            const eased = 1 - Math.pow(1 - p, 3);
+            if (num) num.textContent = format(target * eased, decimals);
+            if (p < 1) requestAnimationFrame(tick);
+          };
+          requestAnimationFrame(tick);
+          io.unobserve(el);
+        });
+      },
+      { threshold: 0.3 }
+    );
+
+    metrics.forEach((el) => io.observe(el));
+  }
+</script>

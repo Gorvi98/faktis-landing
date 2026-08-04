@@ -1,0 +1,58 @@
+---
+// Seguridad SAT — break oscuro
+const items = [
+  { title: 'CFDI 4.0 nativo',                  desc: 'Lectura validada contra el esquema oficial del SAT. Convertimos 3.3 al vuelo.' },
+  { title: 'Datos en México',                  desc: 'Servidores en CDMX. Tu información fiscal no sale del país.' },
+  { title: 'Cifrado en tránsito y en reposo',  desc: 'TLS 1.3 + AES-256. Tu RFC y CSD nunca se almacenan en claro.' },
+  { title: 'Sin acceso humano',                desc: 'Solo tú y tu equipo ven tus CFDIs. Faktis no entrena modelos con tus datos.' },
+];
+
+const rows = [
+  { key: 'Esquema',         val: 'CFDI 4.0 · oficial',      ok: false },
+  { key: 'Validación SAT',  val: 'en línea',                ok: true  },
+  { key: 'Cifrado',         val: 'TLS 1.3 · AES-256',       ok: false },
+  { key: 'Región',          val: 'MX-Central · CDMX',       ok: false },
+  { key: 'Retención',       val: 'Configurable · 30–365 d', ok: false },
+  { key: 'Backups',         val: 'Diarios · cifrados',      ok: false },
+  { key: 'Audit log',       val: 'activo',                  ok: true  },
+];
+---
+
+<section class="sec security sec-dark page" id="seguridad" data-screen-label="04 Seguridad">
+  <div class="fk-wrap">
+    <p class="sec-eyebrow">Seguridad · SAT</p>
+    <h2 class="sec-h2" style="color:var(--fk-white)">
+      Cumple con el SAT.<br /><em>Sin sorpresas.</em>
+    </h2>
+    <p class="sec-lede">
+      Validación contra esquemas oficiales, cifrado en cada paso y datos alojados en México.
+    </p>
+
+    <div class="security-grid">
+      <ul class="security-list">
+        {items.map((it) => (
+          <li>
+            <span class="icon">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+              </svg>
+            </span>
+            <div>
+              <h4>{it.title}</h4>
+              <p>{it.desc}</p>
+            </div>
+          </li>
+        ))}
+      </ul>
+
+      <div class="security-card">
+        {rows.map((r) => (
+          <div class="row">
+            <span class="key">{r.key}</span>
+            <span class="val">{r.ok ? <span class="ok">{r.val}</span> : r.val}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>

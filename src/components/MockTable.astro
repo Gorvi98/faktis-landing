@@ -1,0 +1,60 @@
+---
+// Mock de la tabla de revisión de lote CFDI (visual del hero)
+const rows = [
+  { date: '17/04/26', tipo: 'I', emisor: 'Telmex S.A.B. de C.V.',        rfc: 'TME840315KT6', total: '1,500.00',  acct: '601-001 Telecom' },
+  { date: '17/04/26', tipo: 'I', emisor: 'Gasolinera La Silla SA de CV', rfc: 'GLS920114M83', total: '2,200.00',  acct: '601-005 Combustible' },
+  { date: '16/04/26', tipo: 'I', emisor: 'Innovación Digital Norte SA',  rfc: 'IDN180620P45', total: '56,000.00', acct: '401-001 Ventas' },
+  { date: '16/04/26', tipo: 'E', emisor: 'Suministros Regios, S.A.',     rfc: 'SRE110308LX2', total: '−1,800.00', neg: true, acct: '601-008 Devoluc.' },
+  { date: '15/04/26', tipo: 'I', emisor: 'Oficina Max México SA de CV',  rfc: 'OMM970523VF8', total: '3,200.00',  acct: '601-002 Papelería' },
+  { date: '15/04/26', tipo: 'N', emisor: 'Faktis Despacho Contable',     rfc: 'FDC210412A19', total: '45,000.00', acct: '210-001 Nómina' },
+];
+---
+
+<div class="mock-card" aria-hidden="true">
+  <div class="mock-titlebar">
+    <div class="mock-titlebar-left">
+      <div class="dots"><span></span><span></span><span></span></div>
+      <strong>faktis · revisión de lote</strong>
+    </div>
+    <div class="mock-titlebar-right">12 XML · 17 ABR 26</div>
+  </div>
+
+  <div class="mock-progress"></div>
+
+  <div class="mock-summary">
+    <div><div class="label">Período</div><div class="value">13–17 abr</div></div>
+    <div><div class="label">Emisores</div><div class="value">7</div></div>
+    <div><div class="label">Tipos</div><div class="value">8I · 1N · 1P</div></div>
+    <div><div class="label">Total</div><div class="value">$143,200</div></div>
+  </div>
+
+  <div class="mock-thead">
+    <div>Fecha</div>
+    <div>Tipo</div>
+    <div>Emisor</div>
+    <div class="col-rfc">RFC</div>
+    <div class="num">Total</div>
+    <div class="col-acct">Cuenta SAT</div>
+  </div>
+
+  {rows.map((r) => (
+    <div class="mock-row">
+      <div class="date">{r.date}</div>
+      <div><span class={`tipo-chip ${r.tipo}`}>{r.tipo}</span></div>
+      <div class="emisor">{r.emisor}</div>
+      <div class="rfc">{r.rfc}</div>
+      <div class={r.neg ? 'total neg' : 'total'}>{r.total}</div>
+      <div class="acct-cell"><span class="acct-pill">{r.acct}</span></div>
+    </div>
+  ))}
+
+  <div class="mock-foot">
+    <div class="mock-foot-msg">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="20 6 9 17 4 12" />
+      </svg>
+      Listo. 12 CFDIs clasificados en 4.2s
+    </div>
+    <div class="mock-foot-action">Descargar Excel ↓</div>
+  </div>
+</div>

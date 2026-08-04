@@ -40,58 +40,54 @@ const plans = [
 ];
 ---
 
-<section class="bg-[#F8FAFC] px-4 sm:px-6 lg:px-8 py-20 border-t border-[#E2E8F0]">
-  <div class="max-w-5xl mx-auto">
+<section class="sec">
+  <div class="fk-wrap">
 
-    <div class="text-center mb-12">
-      <p class="fk-eyebrow mb-3">Planes</p>
-      <h2 class="text-2xl sm:text-3xl font-semibold text-[#0F172A]"
-          style="font-family:'Inter Tight','Inter',sans-serif; letter-spacing:-0.025em;">
-        Elige tu plan
-      </h2>
-      <p class="text-[#64748B] mt-3 text-sm">Elige el plan que se ajuste a tu volumen mensual.</p>
+    <div style="text-align:center; margin-bottom:48px;">
+      <p class="sec-eyebrow center">Planes</p>
+      <h2 class="sec-h2 center">Elige tu plan.</h2>
+      <p class="sec-lede center">Elige el plan que se ajuste a tu volumen mensual.</p>
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl mx-auto">
       {plans.map(({ name, badge, price, period, subtitle, features, cta, highlight }) => (
         <div
-          class={`relative flex flex-col rounded-[10px] p-7 border transition-shadow ${
-            highlight
-              ? 'border-[var(--fk-teal)] bg-white shadow-lg shadow-[var(--fk-teal-tint-12)]'
-              : 'border-[#E2E8F0] bg-white hover:shadow-md'
-          }`}
+          class="relative flex flex-col rounded-[10px] p-7 border transition-shadow"
+          style={highlight
+            ? 'border-color:var(--fk-teal); background:#fff; box-shadow:var(--fk-shadow-pop);'
+            : 'border-color:var(--fk-border); background:#fff;'}
         >
           {/* Badge */}
           {badge && (
             <span
               class="absolute -top-3 left-1/2 -translate-x-1/2 text-xs font-semibold px-3 py-1 rounded-full"
-              style="background:#1D9E75; color:#fff; font-family:'JetBrains Mono',monospace; letter-spacing:0.04em;"
+              style="background:var(--fk-teal); color:#fff; font-family:var(--fk-font-mono); letter-spacing:0.04em;"
             >
               {badge}
             </span>
           )}
 
           {/* Nombre + subtítulo */}
-          <p class="text-xs font-semibold text-[#64748B] uppercase tracking-widest mb-1">{name}</p>
-          <p class="text-[#64748B] text-sm mb-5">{subtitle}</p>
+          <p class="fk-secondary text-xs font-semibold uppercase tracking-widest mb-1">{name}</p>
+          <p class="fk-secondary text-sm mb-5">{subtitle}</p>
 
           {/* Precio */}
           <div class="flex items-baseline gap-1 mb-6">
             <span
-              class="text-4xl font-bold text-[#0F172A]"
-              style="font-family:'Inter Tight','Inter',sans-serif; font-variant-numeric:tabular-nums; letter-spacing:-0.035em;"
+              class="text-4xl font-bold"
+              style="font-family:var(--fk-font-display); color:var(--fk-dark); font-variant-numeric:tabular-nums; letter-spacing:-0.035em;"
             >{price}</span>
-            <span class="text-sm text-[#64748B]">{period}</span>
+            <span class="fk-secondary text-sm">{period}</span>
           </div>
 
           {/* Features */}
           <ul class="space-y-2.5 mb-8 flex-1">
             {features.map(f => (
-              <li class="flex items-start gap-2.5 text-sm text-[#475569]">
+              <li class="flex items-start gap-2.5 text-sm" style="color:var(--fk-dark);">
                 <svg
                   class="flex-shrink-0 mt-0.5"
                   width="16" height="16" viewBox="0 0 24 24"
-                  fill="none" stroke="#1D9E75" stroke-width="2.5"
+                  fill="none" stroke="var(--fk-teal)" stroke-width="2.5"
                   stroke-linecap="round" stroke-linejoin="round"
                   aria-hidden="true"
                 >

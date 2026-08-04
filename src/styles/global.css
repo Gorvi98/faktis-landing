@@ -1,11 +1,12 @@
 /* ──────────────────────────────────────────────────────────
-   Faktis Design System v1.1 · landing/global.css
-   Source of truth para tokens en faktis-landing (Astro).
-   Mantiene paridad con `Faktis Design System/colors_and_type.css`.
+   Faktis Design System v1.2 · landing/global.css
+   Tokens + base + primitivas. Paridad con el prototipo
+   `landing/styles/tokens.css`.
+   Los estilos de sección viven en `landing.css`.
    ────────────────────────────────────────────────────────── */
 
 /* Fuentes — deben ir antes de @import tailwind */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inter+Tight:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inter+Tight:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Geist+Mono:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap');
 
 @import "tailwindcss";
 
@@ -27,6 +28,10 @@
   --color-faktis-slate:       #64748B;
   --color-faktis-border:      #E2E8F0;
 
+  /* Dark app surfaces */
+  --color-faktis-bg-deep:     #0b0f17;
+  --color-faktis-bg-card:     #0F1520;
+
   /* Info / data */
   --color-faktis-blue:        #378ADD;
   --color-faktis-blue-light:  #E6F1FB;
@@ -37,7 +42,7 @@
 
   --font-display: 'Inter Tight', 'Inter', 'Plus Jakarta Sans', system-ui, sans-serif;
   --font-sans:    'Inter', 'Plus Jakarta Sans', system-ui, sans-serif;
-  --font-mono:    'JetBrains Mono', ui-monospace, monospace;
+  --font-mono:    'Geist Mono', 'JetBrains Mono', ui-monospace, Menlo, monospace;
   --font-serif:   'Instrument Serif', Georgia, serif;
 }
 
@@ -72,11 +77,26 @@
   --fk-warning:       #EF9F27;
   --fk-success:       #1D9E75;
 
+  /* Dark-app slate steps (hero mock, cards oscuras) */
+  --fk-bg-deep:       #0b0f17;
+  --fk-bg-card:       #0F1520;
+  --fk-fg-100:        #F8FAFC;
+  --fk-fg-200:        #E2E8F0;
+  --fk-fg-300:        #CBD5E1;
+  --fk-fg-400:        #94A3B8;
+  --fk-fg-500:        #64748B;
+  --fk-divider-dk:    rgba(148,163,184,0.10);
+  --fk-tint:          rgba(29,158,117,0.14);
+  --fk-tint-soft:     rgba(29,158,117,0.04);
+
   /* Type */
   --fk-font-display:  'Inter Tight','Inter','Plus Jakarta Sans',system-ui,sans-serif;
   --fk-font-ui:       'Inter','Plus Jakarta Sans',system-ui,sans-serif;
-  --fk-font-mono:     'JetBrains Mono',ui-monospace,monospace;
+  --fk-font-mono:     'Geist Mono','JetBrains Mono',ui-monospace,Menlo,monospace;
   --fk-font-serif:    'Instrument Serif',Georgia,serif;
+
+  --fk-body-size:     15px;
+  --fk-body-line:     1.55;
 
   /* Radii */
   --fk-radius-sm:     6px;
@@ -97,20 +117,29 @@
   --fk-s-6: 32px;
   --fk-s-7: 48px;
   --fk-s-8: 72px;
+
+  /* Chrome fijo (banner + nav) */
+  --fk-banner-h: 34px;
+  --fk-nav-h:    72px;
 }
 
 /* Reset */
 *, *::before, *::after { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 body {
+  margin: 0;
   font-family: var(--fk-font-ui);
+  font-size: var(--fk-body-size);
   background-color: var(--fk-white);
   color: var(--fk-dark);
-  line-height: 1.6;
+  line-height: var(--fk-body-line);
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
 }
 img, video { max-width: 100%; height: auto; display: block; }
+a { color: inherit; text-decoration: none; }
+button { font-family: inherit; }
 
 ::selection { background: var(--fk-teal-tint-30); color: #fff; }
 
@@ -153,6 +182,7 @@ img, video { max-width: 100%; height: auto; display: block; }
   font-family: var(--fk-font-mono);
   font-variant-numeric: tabular-nums;
 }
+.fk-secondary { color: var(--fk-slate-mid); }
 .fk-italic {
   font-family: var(--fk-font-serif);
   font-style: italic;
@@ -168,7 +198,8 @@ img, video { max-width: 100%; height: auto; display: block; }
 }
 
 /* ── Botones ─────────────────────────────────────────────── */
-.btn-primary {
+.btn-primary,
+.fk-btn-primary {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
@@ -185,10 +216,13 @@ img, video { max-width: 100%; height: auto; display: block; }
   transition: background 0.15s ease, transform 0.15s ease;
   white-space: nowrap;
 }
-.btn-primary:hover { background: var(--fk-teal-dark); }
-.btn-primary:active { transform: translateY(1px); }
+.btn-primary:hover,
+.fk-btn-primary:hover { background: var(--fk-teal-dark); }
+.btn-primary:active,
+.fk-btn-primary:active { transform: translateY(1px); }
 
-.btn-secondary {
+.btn-secondary,
+.fk-btn-secondary {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
@@ -205,7 +239,8 @@ img, video { max-width: 100%; height: auto; display: block; }
   transition: border-color 0.15s ease, color 0.15s ease, background 0.15s ease;
   white-space: nowrap;
 }
-.btn-secondary:hover {
+.btn-secondary:hover,
+.fk-btn-secondary:hover {
   border-color: var(--fk-teal);
   color: var(--fk-teal);
   background: var(--fk-teal-tint-04);
@@ -225,3 +260,12 @@ img, video { max-width: 100%; height: auto; display: block; }
 }
 
 :focus-visible { outline: 2px solid var(--fk-teal); outline-offset: 3px; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
