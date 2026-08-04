@@ -73,7 +73,7 @@ html.snap-pages .page {
 }
 .nav-left { display: flex; align-items: center; gap: 18px; }
 .nav-logo { display: inline-flex; align-items: center; }
-.nav-logo img { height: 40px; width: auto; display: block; }
+.nav-logo img { height: 56px; width: auto; display: block; }
 .nav-access {
   display: inline-flex; align-items: center; gap: 8px;
   background: var(--fk-teal); color: #fff;
@@ -123,7 +123,7 @@ html.snap-pages .page {
   .nav { padding: 10px 18px; }
   .nav-links { display: none; }
   .nav-burger { display: flex; }
-  .nav-logo img { height: 32px; }
+  .nav-logo img { height: 42px; }
 }
 
 /* ── Hero ─────────────────────────────────────────────────── */
